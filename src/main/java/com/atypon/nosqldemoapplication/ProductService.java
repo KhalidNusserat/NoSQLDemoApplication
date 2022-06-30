@@ -1,6 +1,7 @@
 package com.atypon.nosqldemoapplication;
 
 import com.atypon.nosqldemoapplication.databaseconnector.ProductDatabaseCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,8 +10,10 @@ import java.util.Map;
 @Service
 public class ProductService {
 
+    private String databaseUrl;
+
     private final ProductDatabaseCollection productCollection = ProductDatabaseCollection.builder()
-            .databaseUrl("http://localhost:8080")
+            .databaseUrl(databaseUrl)
             .database("demo")
             .collection("Product")
             .username("admin")
@@ -31,5 +34,10 @@ public class ProductService {
 
     public void delete(String id) {
         productCollection.removeItems(Map.of("_id", id));
+    }
+
+    @Autowired
+    public void setDatabaseUrl(String databaseUrl) {
+        this.databaseUrl = databaseUrl;
     }
 }
