@@ -25,11 +25,11 @@ public class ProductService {
         productCollection.addItem(product);
     }
 
-    public Product get(String name) {
-        return productCollection.readItems(Map.of("name", name)).get(0);
+    public Product get(String id) {
+        return productCollection.readItems(Map.of("_id", id)).get(0);
     }
 
-    public void delete(String name) {
-        productCollection.removeItems(Map.of("name", name));
+    public void delete(String id) {
+        productCollection.removeItems(Map.of("_id", id));
     }
 }

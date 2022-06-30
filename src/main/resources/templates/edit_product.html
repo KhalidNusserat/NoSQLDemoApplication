@@ -8,7 +8,7 @@
 	<div align="center">
 		<h1>Edit Product</h1>
 		<br />
-		<form action="#" th:action="@{/update}" th:object="${product}"
+		<form action="#" th:action="@{/update/} + ${product.id}" th:object="${product}"
 			method="post">
 
 			<table border="0" cellpadding="10">

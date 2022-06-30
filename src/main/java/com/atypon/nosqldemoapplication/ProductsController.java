@@ -39,24 +39,24 @@ public class ProductsController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateProduct(@ModelAttribute("product") Product product) {
-        service.delete(product.getName());
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String updateProduct(@ModelAttribute("product") Product product, @PathVariable String id) {
+        service.delete(id);
         service.save(product);
         return "redirect:/";
     }
 
-    @RequestMapping("/edit/{name}")
-    public ModelAndView showEditProductPage(@PathVariable String name) {
+    @RequestMapping("/edit/{id}")
+    public ModelAndView showEditProductPage(@PathVariable String id) {
         ModelAndView modelAndView = new ModelAndView("edit_product");
-        Product product = service.get(name);
+        Product product = service.get(id);
         modelAndView.addObject("product", product);
         return modelAndView;
     }
 
-    @RequestMapping("/delete/{name}")
-    public String deleteProduct(@PathVariable String name) {
-        service.delete(name);
+    @RequestMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable String id) {
+        service.delete(id);
         return "redirect:/";
     }
 }

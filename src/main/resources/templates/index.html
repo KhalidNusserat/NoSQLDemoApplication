@@ -13,23 +13,23 @@
     <table border="1" cellpadding="10">
         <thead>
             <tr>
-                <th>Product ID</th>
+                <th>ID</th>
                 <th>Name</th>
-                <th>Brand</th>
-                <th>Made In</th>
+                <th>Country of origin</th>
                 <th>Price</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="product : ${products}">
+                <td th:text="${product.id}">ID</td>
                 <td th:text="${product.name}">Name</td>
                 <td th:text="${product.countryOfOrigin}">Country of origin</td>
                 <td th:text="${product.price}">Price</td>
                 <td>
-                	<a th:href="@{'/edit/' + ${product.name}}">Edit</a>
+                	<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
                 	&nbsp;&nbsp;&nbsp;
-                	<a th:href="@{'/delete/' + ${product.name}}">Delete</a>
+                	<a th:href="@{'/delete/' + ${product.id}}">Delete</a>
                 </td>
             </tr>
         </tbody>
